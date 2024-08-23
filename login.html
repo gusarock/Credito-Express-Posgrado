@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crédito Express Posgrado</title>
+    <link rel="icon" href="Imagenes/logo2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('Imagenes/fondologin.png');
+            background-size: cover;
+            background-position: center;    
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            color: #ffffff;
+            position: absolute;
+            top: 890px;
+            right: 493px;
+        }
+
+        .cta-button1 {
+            padding: 25px 45px;
+            font-size: 35px;
+            background-color: #24224c;
+            color: #ffffff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'Century Gothic';
+            margin-bottom: 20px; /* Ajusta la distancia del botón al borde inferior */
+            position: relative; /* Cambiado a relative para ajustar las posiciones con top y left */
+            top: 4cm; /* 2 cm más abajo */
+            left: -1cm; /* 1 cm hacia la izquierda */
+        }
+        .cta-button2 {
+            padding: 25px 45px;
+            font-size: 35px;
+            background-color: #24224c;
+            color: #ffffff;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Century Gothic';
+            margin-bottom: 20px; /* Ajusta la distancia del botón al borde inferior */
+            cursor: pointer;
+            position: relative; /* Cambiado a relative para ajustar las posiciones con top y left */
+            top: 4cm; /* 2 cm más abajo */
+            left: 11cm; /* 1 cm hacia la izquierda */
+        }
+
+        .cta-button1:hover {
+            background-color: #9594de;
+        }
+        .cta-button2:hover {
+            background-color: #9594de;
+        }
+
+        .capture-box {
+            position: absolute;
+            top: 350px;
+            right: 350px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 5px;
+            max-width: 500px;
+        }
+
+        .capture-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-family: 'Century Gothic';
+            font-size: 40px;
+            transition: font-size 0.2   s ease-in-out;
+        }
+
+        .capture-input:focus {
+            font-size: 24px;
+        }
+
+        .capture-box label {
+            font-family: 'Century Gothic';
+            font-size: 40px;
+            color: #000000;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container {
+            position: absolute;
+            top: 875px;
+            right: 721px;
+            display: flex;
+            align-items: center;
+        }
+
+        #remember {
+            width: 45px;
+            height: 45px;
+        }
+
+        .checkbox-label {
+            margin-left: 10px;
+            color: #ffffff;
+            font-family: 'Century Gothic';
+            font-size: 40px;
+        }
+    </style>
+   <script>
+    function redirigirSegunUsuario() {
+        var usuario = document.getElementById('username').value.toLowerCase();
+        if (usuario === 'connie') {
+            window.location.href = 'interactivoCN.html';
+        } else if (usuario === 'juan') {
+            window.location.href = 'interactivoLC.html';
+        } else if (usuario === 'alejo') {
+            window.location.href = 'interactivoSOSTENIMIENTO.html';
+        } else {
+            alert('Usuario no reconocido');
+        }
+    }
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <button class="cta-button1" onclick="redirigirSegunUsuario()">INGRESAR</button>
+    </div>
+
+    <div class="container">
+        <button class="cta-button2" onclick="window.location.href='registro.html'">REGISTRARSE</button>
+    </div>
+
+    <div class="capture-box">
+        <label for="username">Ingresa tu usuario:</label>
+        <input type="text" id="username" class="capture-input" placeholder="Usuario">
+
+        <label for="password">Ingresa tu contraseña:</label>
+        <input type="password" id="password" class="capture-input" placeholder="********">
+    </div>
+
+    <div class="checkbox-container">
+        <input type="checkbox" id="remember" name="remember">
+        <label class="checkbox-label" for="remember"></label>
+    </div>
+</body>
+</html>

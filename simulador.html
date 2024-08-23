@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crédito Express Posgrado</title>
+    <link rel="icon" href="Imagenes/logo2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('Imagenes/fondosimulador11.png');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .cta-button1, .cta-button2 {
+            padding: 25px 45px;
+            font-size: 35px;
+            background-color: #24224c;
+            color: #ffffff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'Century Gothic';
+            display: inline-block;
+        }
+
+        .cta-button1:hover, .cta-button2:hover {
+            background-color: #38367a;
+        }
+
+        .capture-box, .simulation-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 60px;
+            border-radius: 20px;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 1400px;
+            width: 150%;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1 1 calc(50% - 50px);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .capture-input {
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 30px;
+            font-family: 'Century Gothic';
+            font-size: 45px;
+            transition: font-size 0.2s ease-in-out;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .capture-input:focus {
+            font-size: 45px;
+        }
+
+        .capture-box label, .simulation-box label {
+            font-family: 'Century Gothic';
+            font-size: 35px;
+            color: #000000;
+            display: block;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #24224c;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Century Gothic';
+            font-size: 20px;
+        }
+
+        .form-group:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .capture-box .row, .simulation-box .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 70px;
+            justify-content: center;
+        }
+
+        .error-message {
+            color: red;
+            font-family: 'Century Gothic';
+            font-size: 20px;
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .info-message {
+            color: grey;
+            font-family: 'Century Gothic';
+            font-size: 20px;
+            margin-top: -10px;
+        }
+
+        .simulation-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            max-width: 1400px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .simulation-column {
+            padding: 10px;
+            background-color: rgba(220, 218, 254, 0.8);
+            border-radius: 15px;
+            flex: 1;
+            margin: 10px;
+        }
+
+        .simulation-column h3 {
+            font-family: 'Century Gothic';
+            font-size: 25px;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .simulation-column p {
+            font-family: 'Century Gothic';
+            font-size: 25px;
+            color: #000000;
+        }
+
+        .terms-message {
+            color: grey;
+            font-family: 'Century Gothic';
+            font-size: 20px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .terms-message a {
+            color: grey;
+            text-decoration: underline;
+        }
+
+        .terms-message a:hover {
+            color: black;
+        }
+
+        .capture-title {
+            font-family: 'Century Gothic';
+            font-size: 55px;
+            color: #24224c;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .note {
+            font-family: 'Century Gothic';
+            font-size: 15px;
+            color: grey;
+            text-align: left;
+            margin-top: -10px;
+        }
+
+        #plan-de-pagos-table {
+            display: none;
+            font-family: 'Century Gothic';
+            font-size: 25px;
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #plan-de-pagos-table th, #plan-de-pagos-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-family: 'Century Gothic';
+            font-size: 25px;
+        }
+
+        #plan-de-pagos-table th {
+            background-color: #24224c;
+            color: #ffffff;
+            font-family: 'Century Gothic';
+            font-size: 25px;
+        }
+
+        #plan-de-pagos-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+            font-family: 'Century Gothic';
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        function calcularPlanPagos() {
+            const valor = parseFloat(document.getElementById('valor').value.replace(/,/g, ''));
+            const nperiodos = parseInt(document.getElementById('nperiodos').value);
+            const pago = parseFloat(document.getElementById('pago').value.replace(/,/g, ''));
+            const errorMessage = document.getElementById('error-message');
+            const simulationBox = document.getElementById('simulation-box');
+
+            if (isNaN(valor) || isNaN(nperiodos) || isNaN(pago)) {
+                simulationBox.style.display = 'none';
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Falta algún dato para realizar la simulación.';
+                return;
+            }
+
+            if (valor > 50000000) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'El valor no puede exceder los $50,000,000.';
+                simulationBox.style.display = 'none';
+                return;
+            }
+
+            // Datos de la simulación
+            const tasaInteres = 'IPC+8%';
+            const tasaEA = '18,23%';
+            const afim = 150000;
+            const inflacion = '9,28%';
+            const incrementoAnual = '11,28%'; // IPC + 2%
+            const totalAPagarEstudio = pago * nperiodos;
+            const saldoAFechaEstudio = valor - totalAPagarEstudio;
+            const cuotasPendientes = saldoAFechaEstudio > 0 ? saldoAFechaEstudio : 0;
+            
+            // Plan de pagos después de graduarse
+            const nperiodosGraduacion = nperiodos * 2;
+            const nuevaCuota = (valor + (valor * 0.1823) + afim) / nperiodosGraduacion;
+
+            simulationBox.style.display = 'flex';
+            errorMessage.style.display = 'none';
+
+            document.getElementById('plan-pagos').innerHTML = `
+                <div class="simulation-column">
+                    <h3>Mientras estudias</h3>
+                    <p>Tasa de interés: ${tasaInteres}</p>
+                    <p>Tasa EA: ${tasaEA}</p>
+                    <p>AFIM: $${afim.toLocaleString()}</p>
+                    <p>Inflación (IPC año anterior): ${inflacion}</p>
+                    <p>Incremento anual matrículas (IPC+2%): ${incrementoAnual}</p>
+                    <p>Total pagado mientras estudias: $${totalAPagarEstudio.toLocaleString()}</p>
+                    <p>Saldo a la fecha: $${saldoAFechaEstudio.toLocaleString()}</p>
+                </div>
+                <div class="simulation-column">
+                    <h3>Cuando te gradúes</h3>
+                    <p>Tasa de interés: ${tasaInteres}</p>
+                    <p>Tasa EA: ${tasaEA}</p>
+                    <p>AFIM: $${afim.toLocaleString()}</p>
+                    <p>Cuota mensual después de graduarse: $${nuevaCuota.toFixed(2).toLocaleString()}</p>
+                    <p>Cuotas pendientes: ${nperiodosGraduacion}</p>
+                </div>
+            `;
+        }
+
+        function mostrarPlanDePagos() {
+            const valor = parseFloat(document.getElementById('valor').value.replace(/,/g, ''));
+            const nperiodos = parseInt(document.getElementById('nperiodos').value);
+            const pago = parseFloat(document.getElementById('pago').value.replace(/,/g, ''));
+
+            const afim = 150000;
+            const tasaEA = 0.1823;
+            const tabla = document.getElementById('plan-de-pagos-table');
+            let tbody = '';
+
+            if (isNaN(valor) || isNaN(nperiodos) || isNaN(pago)) {
+                alert('Por favor, complete todos los campos para mostrar el plan de pagos.');
+                return;
+            }
+
+            const nperiodosGraduacion = nperiodos * 2;
+            const saldoDeuda = valor;
+            const cuotaMensual = pago;
+            const tasaInteres = tasaEA / 12;
+            let saldo = saldoDeuda;
+
+            for (let mes = 1; mes <= nperiodosGraduacion; mes++) {
+                const abonoInteres = saldo * tasaInteres;
+                const abonoCapital = cuotaMensual - abonoInteres;
+                saldo -= abonoCapital;
+
+                if (saldo < 0) saldo = 0;
+
+                tbody += `
+                    <tr>
+                        <td>${mes}</td>
+                        <td>$${cuotaMensual.toLocaleString()}</td>
+                        <td>$${abonoCapital.toFixed(2).toLocaleString()}</td>
+                        <td>$${abonoInteres.toFixed(2).toLocaleString()}</td>
+                        <td>$${afim.toLocaleString()}</td>
+                        <td>$${saldo.toFixed(2).toLocaleString()}</td>
+                    </tr>
+                `;
+            }
+
+            tabla.style.display = 'table';
+            document.getElementById('plan-de-pagos-tbody').innerHTML = tbody;
+        }
+
+        document.addEventListener('input', calcularPlanPagos);
+    </script>
+</head>
+<body>
+    <div class="capture-box">
+        <div class="capture-title">
+            Planea tu financiamiento
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="valor">Valor solicitado por periodo académico:*</label>
+                <input type="number" id="valor" class="capture-input" placeholder="$12.000.000" step="0.01" required>
+                <div class="tooltip">Los periodos académicos pueden ser trimestrales, cuatrimestrales, semestrales o anualizados.</div>
+                <span class="note">* El valor máximo permitido es $50,000,000.</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="nperiodos">Número de periodos a financiar:*</label>
+                <select id="nperiodos" class="capture-input" required>
+                    <option value="" selected disabled>Selecciona</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="pago">¿Cuánto puedes pagar mensualmente mientras estudias?*</label>
+                <input type="number" id="pago" class="capture-input" placeholder="$" step="0.01" required>
+                <div class="tooltip">La cuota mensual no puede superar el 20% del valor solicitado.</div>
+            </div>
+        </div>
+    </div>
+
+    <span id="error-message" class="error-message"></span>
+
+    <div id="simulation-box" class="simulation-box">
+        <div id="plan-pagos" class="row"></div>
+    </div>
+
+    <div class="button-container">
+        <button class="cta-button2" onclick="mostrarPlanDePagos()">Ver plan de pagos</button>
+        <button class="cta-button1" onclick="window.location.href='datosacademicos.html'">Aceptar y Continuar</button>
+    </div>
+
+    <table id="plan-de-pagos-table">
+        <thead>
+            <tr>
+                <th>Mes</th>
+                <th>Cuota Mensual</th>
+                <th>Abono a Capital</th>
+                <th>Abono a Interés</th>
+                <th>Seguro (AFIM)</th>
+                <th>Saldo Deuda</th>
+            </tr>
+        </thead>
+        <tbody id="plan-de-pagos-tbody">
+            <!-- El contenido será generado por JavaScript -->
+        </tbody>
+    </table>
+
+    <div class="terms-message">
+        <p>Al continuar, aceptas los <a href="#">Términos y Condiciones</a> de Crédito Express Posgrado.</p>
+    </div>
+</body>
+</html>

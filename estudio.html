@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Crédito Express Posgrados</title>
+    <link rel="icon" href="Imagenes/logo2.ico" type="image/x-icon">
+    
+    <style>
+       body {
+            background-image: url(estudio.png);
+            background-size: cover; /* Ajusta la imagen de fondo para cubrir todo el cuerpo */
+            background-repeat: no-repeat;
+        }
+        .boton {
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+            /* Puedes ajustar las coordenadas left, top, right, bottom según lo necesites */
+            position: absolute; /* Cambia la posición para permitir la configuración de las coordenadas */
+            left: 50%; /* Centra horizontalmente */
+            bottom: 8px; /* Coloca 20 píxeles desde el borde inferior */
+            transform: translateX(-50%); /* Ajusta para centrar completamente */
+            width: 180px; /* Ancho del botón */
+            height: auto; /* Altura ajustada automáticamente */
+    
+}
+
+        .boton:hover {
+            filter: brightness(60%);
+        } 
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Cambiado para alinear el contenido hacia arriba */
+            height: 80vh; /* Ajustado para ocupar el 80% de la altura visible */
+            margin-top: 50px; /* Ajusta el margen superior para separar del borde superior */
+        }
+
+        .formulario {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 15px; /* Tamaño de fuente ajustado */
+            font-style: initial;
+            width: 70%;
+            max-width: 600px; /* Ancho máximo del formulario ajustado */
+            font-family: Arial, sans-serif; /* Tipo de letra amigable */
+            margin-top: 100px;
+        }
+
+        .pregunta {
+            text-align: center; /* Centra el texto */
+            margin-bottom: 20px; /* Espacio entre preguntas */
+        }
+
+        .opciones {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se ajusten a la pantalla */
+            justify-content: space-between; /* Alinea los elementos a los extremos */
+        }
+
+        .opcion {
+            margin-bottom: 20px; /* Espacio entre cada pregunta */
+            width: calc(50% - 10px); /* Ancho del elemento para que estén alineados horizontalmente */
+            padding-right: 10px; /* Añadido para espacio entre elementos */
+        }
+
+        .opcion label {
+            display: block; /* Hace que cada pregunta esté en una línea diferente */
+            margin-bottom: 5px; /* Espacio entre la etiqueta y el campo */
+        }
+
+        .opcion input[type="text"],
+        .opcion select,
+        .opcion input[type="number"],
+        .opcion input[type="date"],
+        .opcion input[type="checkbox"] {
+            width: 100%; /* Ocupa el ancho completo */
+            padding: 12px; /* Tamaño de padding aumentado */
+            margin-top: 5px; /* Espacio entre campos */
+            border-radius: 8px; /* Borde redondeado */
+            border: 1px solid #ccc; /* Agrega borde para mejorar la apariencia */
+            box-sizing: border-box; /* Incluye el padding en el ancho total */
+        }
+
+        .pregunta input[type="text"],
+        .pregunta select,
+        .pregunta input[type="number"],
+        .pregunta input[type="date"],
+        .opcion input[type="checkbox"] {
+            width: 100%; /* Ocupa el ancho completo */
+            padding: 12px; /* Tamaño de padding aumentado */
+            margin-top: 5px; /* Espacio entre campos */
+            border-radius: 8px; /* Borde redondeado */
+            border: 1px solid #ccc; /* Agrega borde para mejorar la apariencia */
+            box-sizing: border-box; /* Incluye el padding en el ancho total */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="formulario">
+            <div class="opciones">
+                <div class="opcion">
+                    <label for="tipo_documento">Nivel de formación del posgrado:</label>
+                    <select id="tipo_documento" name="tipo_documento" required>
+                        <option value="cc">Especialización</option>
+                        <option value="pasaporte">Maestría</option>
+                        <option value="ce">Doctorado</option>
+                        <option value="ce">Doctorado PHD</option>
+                    </select>
+                </div>
+                <div class="opcion">
+                    <label for="tipo_documento">Ciudad donde realizara el estudio:</label>
+                    <select id="tipo_documento" name="tipo_documento" required>
+                        <option value="cc">Bogotá</option>
+                        <option value="pasaporte">Medellín</option>
+                        <option value="ce">Cali</option>
+                        <option value="ce">Bucaramanga</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pregunta">
+                <label for="tipo_documento">Formación:</label>
+                    <select id="tipo_documento" name="tipo_documento" required>
+                        <option value="cc">SNIES - Especialización en Gerencia de Proyectos</option>
+                        <option value="pasaporte">SNIES - Especialización en dirección de Proyectos</option>
+                        <option value="ce">SNIES - Especialización en Ciberseguridad</option>
+                        <option value="ce">SNIES - Especialización en Redes</option>
+                    </select>
+            </div>
+            
+        </div>
+    </div>
+    <a href="prestar.html">
+        <img class="boton" src="Continuar2.png" alt="Continuar">
+    </a>
+</body>
+</html>
